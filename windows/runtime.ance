@@ -2,6 +2,7 @@ project.name <: c"runtime";
 project.kind <: Library;
 project.opt_level <: 3;
 project.is_warning_as_error_enabled <: true;
+project.is_runtime_excluded <: true;
 
 project.libs <: new[6] dynamic *u8;
 project.libs[0] <: c"kernel32";
