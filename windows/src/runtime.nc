@@ -17,18 +17,21 @@ extern __assert__ (is_fullfilled: bool)
     if not is_fullfilled then __abort__();
 }
 
-extern GlobalAlloc (uFlags: u32, dwBytes: size) : ptr;
-private const alloc_flags: u32 := 0x0040:32; // GMEM_ZEROINIT | GMEM_FIXED
+extern GetProcessHeap () : ptr;
+
+extern HeapAlloc (hHeap: ptr, dwFlags: u32, dwBytes: size) : ptr;
+private const alloc_flags: u32 := 0x0008:32; // HEAP_ZERO_MEMORY
 
 extern __allocate__ (memory_size: size) : ptr 
 {
-    return GlobalAlloc(alloc_flags, memory_size);
+    return HeapAlloc(GetProcessHeap(), alloc_flags, memory_size);
 }
 
-extern GlobalFree (memory: ptr) : ptr;
+extern HeapFree (hHeap: ptr, dwFlags: u32, lpMem: ptr) : u32;
+private const free_flags: u32 := 0x0000:32; // -
 
 extern __free__ (memory: ptr) 
 {
-    GlobalFree(memory);
+    HeapFree(GetProcessHeap(), free_flags, memory);
 }
 

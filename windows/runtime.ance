@@ -4,16 +4,16 @@ project.opt_level <: 3;
 project.is_warning_as_error_enabled <: true;
 project.is_runtime_excluded <: true;
 
-project.libs <: new[6] dynamic *u8;
-project.libs[0] <: c"kernel32";
-project.libs[1] <: c"ucrt";
-project.libs[2] <: c"msvcrt";
-project.libs[3] <: c"libcmt";
-project.libs[4] <: c"libvcruntime";
-project.libs[5] <: null;
+project.libraries <: new[6] dynamic *u8;
+project.libraries[0] <: c"kernel32";
+project.libraries[1] <: c"ucrt";
+project.libraries[2] <: c"msvcrt";
+project.libraries[3] <: c"libcmt";
+project.libraries[4] <: c"libvcruntime";
+project.libraries[5] <: null;
 
-project.libpaths <: new[4] dynamic *u8;
-project.libpaths[0] <: c"C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x64";
-project.libpaths[1] <: c"C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\ucrt\\x64";
-project.libpaths[2] <: c"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.30.30705\\lib\\x64";
-project.libpaths[3] <: null;
+project.library_paths <: new[4] dynamic *u8;
+project.library_paths[0] <: c"C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x64";
+project.library_paths[1] <: c"C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\ucrt\\x64";
+project.library_paths[2] <: c"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.30.30705\\lib\\x64";
+project.library_paths[3] <: null;
