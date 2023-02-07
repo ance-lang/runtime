@@ -18,6 +18,13 @@ extern __assert__ (is_fullfilled: bool)
 }
 
 extern GetProcessHeap () : ptr;
+private process_heap: ptr := get_process_heap();
+
+private get_process_heap () : ptr 
+{
+    let process_heap <: GetProcessHeap();
+    return process_heap;
+}
 
 extern HeapAlloc (hHeap: ptr, dwFlags: u32, dwBytes: size) : ptr;
 private const alloc_flags: u32 := 0x0008:32; // HEAP_ZERO_MEMORY
