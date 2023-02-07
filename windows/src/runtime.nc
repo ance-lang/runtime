@@ -31,7 +31,7 @@ private const alloc_flags: u32 := 0x0008:32; // HEAP_ZERO_MEMORY
 
 extern __allocate__ (memory_size: size) : ptr 
 {
-    return HeapAlloc(GetProcessHeap(), alloc_flags, memory_size);
+    return HeapAlloc(process_heap, alloc_flags, memory_size);
 }
 
 extern HeapFree (hHeap: ptr, dwFlags: u32, lpMem: ptr) : u32;
@@ -39,6 +39,6 @@ private const free_flags: u32 := 0x0000:32; // -
 
 extern __free__ (memory: ptr) 
 {
-    HeapFree(GetProcessHeap(), free_flags, memory);
+    HeapFree(process_heap, free_flags, memory);
 }
 
