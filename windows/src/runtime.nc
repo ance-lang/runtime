@@ -5,16 +5,23 @@ extern __exit__ (exit_code: u32)
     ExitProcess(exit_code);
 }
 
+extern MessageBoxA (hWnd: ptr, lpText: *u8, lpCaption: *u8, uType: u32) : i32;
+private message_box_flags: u32 := 0x0000:32  // MB_OK
+                             <or> 0x0000:32  // MB_DEFBUTTON1
+                             <or> 0x0010:32  // MB_ICONERROR
+                             <or> 0x0100:32; // MB_SYSTEMMODAL
+
 private const aborted_exit_code: u32 := 3:32;
 
-extern __abort__ () 
+extern __abort__ (reason: *u8) 
 {
+    MessageBoxA(null, reason, c"ance runtime error", message_box_flags);
     ExitProcess(aborted_exit_code);
 }
 
-extern __assert__ (is_fullfilled: bool) 
+extern __assert__ (is_fullfilled: bool, failure_reason: *u8) 
 {
-    if not is_fullfilled then __abort__();
+    if not is_fullfilled then __abort__(failure_reason);
 }
 
 extern GetProcessHeap () : ptr;
