@@ -1,8 +1,8 @@
 project.name <: c"runtime";
 project.kind <: Library;
 project.opt_level <: 3;
-project.is_warning_as_error_enabled <: true;
-project.is_runtime_excluded <: true;
+project.warning_as_error_enabled <: true;
+project.runtime_excluded <: true;
 
 project.libraries <: new[4] dynamic *u8;
 project.libraries[0] <: c"kernel32";
