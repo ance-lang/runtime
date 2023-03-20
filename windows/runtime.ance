@@ -4,13 +4,15 @@ project.opt_level <: 3;
 project.warning_as_error_enabled <: true;
 project.runtime_excluded <: true;
 
-project.libraries <: new[4] dynamic *u8;
+project.libraries <: new[3] dynamic *u8;
 project.libraries[0] <: c"kernel32";
 project.libraries[1] <: c"user32";
-project.libraries[2] <: c"msvcrt";
-project.libraries[3] <: null;
+project.libraries[2] <: null;
 
-project.library_paths <: new[3] dynamic *u8;
-project.library_paths[0] <: c"C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.19041.0\\um\\x64";
-project.library_paths[1] <: c"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.30.30705\\lib\\x64";
-project.library_paths[2] <: null;
+project.archives <: new[2] dynamic *u8;
+project.archives[0] <: c"clang_rt.builtins-x86_64.lib";
+project.archives[1] <: null;
+
+project.library_paths <: new[0] dynamic *u8;
+project.library_paths[0] <: c"C:\\dev\\vcpkg\\installed\\x64-windows\\tools\\llvm\\lib\\clang\\14.0.4\\lib\\windows";
+project.library_paths[1] <: null;

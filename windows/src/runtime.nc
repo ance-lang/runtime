@@ -1,10 +1,4 @@
 extern ExitProcess (uExitCode: u32);
-
-extern __exit__ (exit_code: u32) 
-{
-    ExitProcess(exit_code);
-}
-
 extern MessageBoxA (hWnd: ptr, lpText: *u8, lpCaption: *u8, uType: u32) : i32;
 
 private message_box_flags: u32 := 0x0000:32  // MB_OK
@@ -32,12 +26,12 @@ private abort_on_error ()
 {
     let error := GetLastError();
     
-    let formated_error: *u8;
-    FormatMessageA(format_message_flags, null, error, 0, addressof formated_error, 0, null);
+    let formatted_error: *u8;
+    FormatMessageA(format_message_flags, null, error, 0, addressof formatted_error, 0, null);
     
-    MessageBoxA(null, formated_error, c"ance internal runtime error", message_box_flags);
+    MessageBoxA(null, formatted_error, c"ance internal runtime error", message_box_flags);
     
-    LocalFree(ptr(formated_error));
+    LocalFree(ptr(formatted_error));
     ExitProcess(error);
 }
 
