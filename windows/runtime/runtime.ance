@@ -3,6 +3,7 @@ project.kind <: Library;
 project.opt_level <: 3;
 project.warning_as_error_enabled <: true;
 project.runtime_excluded <: true;
+project.std_excluded <: true;
 
 project.libraries <: new[3] dynamic *u8;
 project.libraries[0] <: c"kernel32";
