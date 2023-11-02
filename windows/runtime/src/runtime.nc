@@ -31,7 +31,7 @@ private abort_on_error ()
     
     MessageBoxA(null, formatted_error, c"ance internal runtime error", message_box_flags);
     
-    LocalFree(ptr(formatted_error));
+    LocalFree(formatted_error as ptr);
     ExitProcess(error);
 }
 
