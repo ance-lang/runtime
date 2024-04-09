@@ -1,5 +1,5 @@
 extern ExitProcess (uExitCode: u32);
-extern MessageBoxA (hWnd: ptr, lpText: *u8, lpCaption: *u8, uType: u32) : i32;
+extern MessageBoxA (hWnd: ptr, lpText: *u8, lpCaption: *u8, uType: u32) : s32;
 
 private message_box_flags: u32 := 0x0000:32  // MB_OK
                              <or> 0x0000:32  // MB_DEFBUTTON1
